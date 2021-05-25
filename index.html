@@ -1,0 +1,80 @@
+<!--Main Page-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UOW Room Booking System</title>
+        <link rel="stylesheet" href="./style.css">
+        <script defer src=function.js></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <header>
+        <nav>
+            <div class="nav-banner">
+                <li>
+                    <img class="logo-img" src="./images/img_57ece1ff0e0f0.png" alt="logo">
+                </li>
+                <li>
+                    <a href="login.html" id="logoutButton" onclick="logoutUser()">Logout</a>
+                </li>
+                <li>
+                    <span id="usernameDisplay">
+                        Welcome, user
+                    </span>
+                </li>
+                <li>
+                    <a href="contact.html">Contact us</a>
+                </li>
+                <li>
+                    <a href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a class="active" id="mainPage" href="#">Main page</a>
+                </li>
+            </div>
+        </nav>
+    </header>
+    <body>
+        <div id="index"></div>
+        <div class="main-page">
+            <h1>Book a room</h1>
+            <a href="viewBookings.html" class="all-btn" id="createButton"><i class="material-icons">search</i>View your bookings</a>
+            <li class="room-list" id="roomList">
+                <!--Each room listed is here-->
+
+                <!-- Room list template -->
+                <template id="selectRoomTemp">
+                    <section>
+                        <li class="room-div">
+                            <div class="room-details" id="roomContainer">
+                                <img class="room-image" id="roomImage" src="" alt="">
+                                <h1 id="roomName"></h1>
+                                <h2 id="capacityDisplay"></h2>
+                                <label for="roomLoc"><b>Location:</b></label>
+                                <p id="roomLoc"></p><br>
+                                <label for="roomDesc"><b>Description:</b></label>
+                                <p id="roomDesc"></p>
+                                <br><br>
+                                <span class="price-display" id="priceDisplay">
+
+                                </span>
+                            </div>
+                            <div class="button-div">
+                                <button class="all-btn" id="selectRoomButton"><i class="material-icons">add</i> Book this room</button>
+                            </div>
+                        </li>
+                    </section>
+                </template>
+            </li>
+        </div>
+        <footer>
+            <div>
+                <p>
+                    Numero Uno Group © University of Wollongong Australia
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

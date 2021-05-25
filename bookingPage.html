@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirm booking</title>
+        <link rel="stylesheet" href="./style.css">
+        <script defer src="function.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="nav-banner">
+                    <li>
+                        <img class="logo-img" src="./images/img_57ece1ff0e0f0.png" alt="logo">
+                    </li>
+                    <li>
+                        <a href="login.html" id="logoutButton" onclick="logoutUser()">Logout</a>
+                    </li>
+                    <li>
+                        <span id="usernameDisplay">
+                            Welcome, user
+                        </span>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact us</a>
+                    </li>
+                    <li>
+                        <a href="faq.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a id="mainPage" href="#">Main page</a>
+                    </li>
+                </div>
+            </nav>
+        </header>
+        <div id="bookingPage"></div>
+        <div class="main-page">
+            <h1>Confirm your booking</h1>
+            <div class="div-details">
+                <div class="detail-room">
+                    <img src="./images/room1.jpg" alt="" class="details-img" id="detailsImg"><br>
+                    <h2 id="detailsType"></h2>
+                    <label for="detailsCapacity"><b>Capacity:</b></label>
+                    <span id="detailsCapacity"></span><br>
+                    <label for="detailsLocation"><b>Location:</b></label>
+                    <p id="detailsLocation" style="margin: 0;"></p><br>
+                    <label for="detailsDescription"><b>Description:</b></label><br>
+                    <p id="detailsDescription" style="margin: 0;"></p><br><br>
+                    <label for="detailsPrice"></label>
+                    <span class="price-display" id="detailsPrice"></span>
+                </div>
+                <div class="booking-page">
+                    <form>
+                        <label for="datePicker">Select a date</label><br>
+                        <input type="date" name="chooseDate" id="datePicker" placeholder="dd/mm/yyyy" onchange="checkDate()"><br><br>
+                        <div class="time-display" id="timeDisplay">
+                            <label for="timePicker">Time</label><br>
+                            <div id="timeDiv">
+                                <input type="checkbox" name="timings" value="0800" id="time0800" onchange="checkTimeCheckboxes(this)">08:00<br>
+                                <input type="checkbox" name="timings" value="0900" id="time0900" onchange="checkTimeCheckboxes(this)">09:00<br>
+                                <input type="checkbox" name="timings" value="1000" id="time1000" onchange="checkTimeCheckboxes(this)">10:00<br>
+                                <input type="checkbox" name="timings" value="1100" id="time1100" onchange="checkTimeCheckboxes(this)">11:00<br>
+                                <input type="checkbox" name="timings" value="1200" id="time1200" onchange="checkTimeCheckboxes(this)">12:00<br>
+                                <input type="checkbox" name="timings" value="1300" id="time1300" onchange="checkTimeCheckboxes(this)">13:00<br>
+                                <input type="checkbox" name="timings" value="1400" id="time1400" onchange="checkTimeCheckboxes(this)">14:00<br>
+                                <input type="checkbox" name="timings" value="1500" id="time1500" onchange="checkTimeCheckboxes(this)">15:00<br>
+                                <input type="checkbox" name="timings" value="1600" id="time1600" onchange="checkTimeCheckboxes(this)">16:00<br>
+                            </div>
+                        </div>
+                        <p class="error" id="timeError"></p>
+                        <br>
+                        <div>
+                            <br>
+                            <label for="promocode">Promo Code</label><br>
+                            <input type="text" class="promo-code" id="promoCode" onblur="updatePrices()">
+                            <p class="error" id="promoError"></p><br>
+                            <label for="cardNumber">Card Number</label><br>
+                            <input type="number" class="card-number" id="cardNumber" placeholder="XXXXXXXXXXXXXXXX"><br>
+                            <label for="cardExpiryM">Card Expiry</label><br>
+                            <select name="card-expiry" id="cardExpiryM">
+                                <option value="" class="card-expiry" id="cardExpiryM">mm</option>
+                                <option value="01" class="card-expiry" id="cardExpiryM01" name="cardExpiryMonth">01</option>
+                                <option value="02" class="card-expiry" id="cardExpiryM02" name="cardExpiryMonth">02</option>
+                                <option value="03" class="card-expiry" id="cardExpiryM03" name="cardExpiryMonth">03</option>
+                                <option value="04" class="card-expiry" id="cardExpiryM04" name="cardExpiryMonth">04</option>
+                                <option value="05" class="card-expiry" id="cardExpiryM05" name="cardExpiryMonth">05</option>
+                                <option value="06" class="card-expiry" id="cardExpiryM06" name="cardExpiryMonth">06</option>
+                                <option value="07" class="card-expiry" id="cardExpiryM07" name="cardExpiryMonth">07</option>
+                                <option value="08" class="card-expiry" id="cardExpiryM08" name="cardExpiryMonth">08</option>
+                                <option value="09" class="card-expiry" id="cardExpiryM09" name="cardExpiryMonth">09</option>
+                                <option value="10" class="card-expiry" id="cardExpiryM10" name="cardExpiryMonth">10</option>
+                                <option value="11" class="card-expiry" id="cardExpiryM11" name="cardExpiryMonth">11</option>
+                                <option value="12" class="card-expiry" id="cardExpiryM12" name="cardExpiryMonth">12</option>
+                            </select>
+                            <span> / </span>
+                            <select name="card-expiry" id="cardExpiryY">
+                                <option value="" class="card-expiry" id="cardExpiryY">yy</option>
+                                <option value="20" class="card-expiry" id="cardExpiryY20" name="cardExpiryYear">20</option>
+                                <option value="21" class="card-expiry" id="cardExpiryY21" name="cardExpiryYear">21</option>
+                                <option value="22" class="card-expiry" id="cardExpiryY22" name="cardExpiryYear">22</option>
+                                <option value="23" class="card-expiry" id="cardExpiryY23" name="cardExpiryYear">23</option>
+                                <option value="24" class="card-expiry" id="cardExpiryY24" name="cardExpiryYear">24</option>
+                                <option value="25" class="card-expiry" id="cardExpiryY25" name="cardExpiryYear">25</option>
+                                <option value="26" class="card-expiry" id="cardExpiryY26" name="cardExpiryYear">26</option>
+                                <option value="27" class="card-expiry" id="cardExpiryY27" name="cardExpiryYear">27</option>
+                                <option value="28" class="card-expiry" id="cardExpiryY28" name="cardExpiryYear">28</option>
+                                <option value="29" class="card-expiry" id="cardExpiryY29" name="cardExpiryYear">29</option>
+                                <option value="30" class="card-expiry" id="cardExpiryY30" name="cardExpiryYear">30</option>
+                                <option value="31" class="card-expiry" id="cardExpiryY31" name="cardExpiryYear">31</option>
+                                <option value="32" class="card-expiry" id="cardExpiryY32" name="cardExpiryYear">32</option>
+                                <option value="33" class="card-expiry" id="cardExpiryY33" name="cardExpiryYear">33</option>
+                                <option value="34" class="card-expiry" id="cardExpiryY34" name="cardExpiryYear">34</option>
+                                <option value="35" class="card-expiry" id="cardExpiryY35" name="cardExpiryYear">35</option>
+                                <option value="36" class="card-expiry" id="cardExpiryY36" name="cardExpiryYear">36</option>
+                                <option value="37" class="card-expiry" id="cardExpiryY37" name="cardExpiryYear">37</option>
+                                <option value="38" class="card-expiry" id="cardExpiryY38" name="cardExpiryYear">38</option>
+                                <option value="39" class="card-expiry" id="cardExpiryY39" name="cardExpiryYear">39</option>
+                            </select>
+                            <br>
+                            <label for="cardCvv">CVV</label><br>
+                            <input type="number" class="card-cvv" id="cardCvv" minlength="3" min="000" max="999" placeholder="888" required>
+                            <br>
+                            <label for="totalPrice">Total price:</label><br><br>
+                            <span class="price-display" id="totalPrice">$0.00</span>
+                            <br><br>
+                            <div class="hide-display" id="totalPriceDiscountDiv">
+                                <label for="totalPriceDiscount">Total price after discount:</label><br><br>
+                                <span class="price-display" id="totalPriceDiscount"><b>$0.00</b></span>
+                            </div>
+                            <br>
+                            <button class="all-btn" id="bookBtn" disabled>Book now</button>
+                            <p class="error" id="bookError"></p>
+                        </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <footer>
+            <div>
+                <p>
+                    Numero Uno Group © University of Wollongong Australia
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

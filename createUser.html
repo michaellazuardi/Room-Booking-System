@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create user</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="function.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <header>
+        <nav>
+            <div class="nav-banner">
+                <li>
+                    <img class="logo-img" src="./images/img_57ece1ff0e0f0.png" alt="logo">
+                </li>
+                <li>
+                    <a href="login.html" id="logoutButton" onclick="logoutUser()">Logout</a>
+                </li>
+                <li>
+                    <span id="usernameDisplay">
+                        Welcome, user
+                    </span>
+                </li>
+                <li>
+                    <a href="contact.html">Contact us</a>
+                </li>
+                <li>
+                    <a href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a class="active" id="mainPage" href="#">Main page</a>
+                </li>
+            </div>
+        </nav>
+    </header>
+    <body>
+        <div id="createUsers"></div>
+        <div class="main-page">
+            <h1>Create user account</h1>
+            <div>
+                <label for="profileImg">Profile Image</label><br>
+                <img src="./images/blank-profile-picture-973460_1280.png" alt="" id="previewImg" width="100px" style="padding: 15px 0px;"><br>
+                <input type="file" accept="image/*" id="profileImg" onchange="checkImage(this)"><br><br>
+            </div>
+            <div>
+                <label for="fullName">Full name</label><br>
+                <input type="text" id="fullName" placeholder="Full name"><br><br>
+                <label for="username">Username</label><br>
+                <input type="text" id="username" placeholder="Username"><br><br>
+                <label for="password">Password</label><br>
+                <input type="text" id="password" placeholder="Password"><br><br>
+                <label for="email">Email</label><br>
+                <input type="text" id="email" placeholder="abc@uow.edu.au"><br><br>
+                <label for="userType">Staff/Student user</label><br>
+                <label for="staff">Staff</label>
+                <input type="radio" name="userType" id="staff" value="Staff" checked="true"><br>
+                <label for="student">Student</label>
+                <input type="radio" name="userType" id="student" value="Student"><br><br>
+                <label for="suspended">Suspend account</label><br>
+                <input type="checkbox" id="suspended"><br><br>
+                <button class="all-btn" id="newAccBtn" onclick="createAcc()">Create account</button>
+                <p class="error" id="errorMsg"></p>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <p>
+                    Numero Uno Group © University of Wollongong Australia
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

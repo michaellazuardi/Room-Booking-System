@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit listings</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="function.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="nav-banner">
+                    <li>
+                        <img class="logo-img" src="./images/img_57ece1ff0e0f0.png" alt="logo">
+                    </li>
+                    <li>
+                        <a href="login.html" id="logoutButton" onclick="logoutUser()">Logout</a>
+                    </li>
+                    <li>
+                        <span id="usernameDisplay">
+                            Welcome, user
+                        </span>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact us</a>
+                    </li>
+                    <li>
+                        <a href="faq.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a id="mainPage" href="#">Manage rooms</a>
+                    </li>
+                </div>
+            </nav>
+        </header>
+        <div id="manageRooms"></div>
+        <div class="main-page">
+            <h1>Edit room listings</h1>
+            <div class="add-room-form">
+                <button class="all-btn" id="createButton" onclick="displayForm('modalForm')"><i class="material-icons">add</i>Create a new room</button>
+                <button class="all-btn" id="promoCodeBtn" onclick="displayPromos()"><i class="material-icons">money_off</i>Manage promo codes</button>
+            </div>
+            <li class="room-list" id="roomList">
+                
+            </li>
+                <!-- Edit listing template -->
+                <template id="editRoomTemp">
+                    <section>
+                        <li class="room-div">
+                            <div class="room-details" id="roomContainer">
+                                <span id="roomId"></span>
+                                <br>
+                                <img class="room-image" id="roomImage" src="" alt="">
+                                <h1 id="roomName"></h1>
+                                <h2 id="capacityDisplay"></h2>
+                                <label for="locationDisplay"><b>Location:</b></label>
+                                <p class="edit-location" id="locationDisplay"></p><br><br>
+                                <label for="descDisplay"><b>Description:</b></label>
+                                <p id="descDisplay"></p>
+                                <p id="launchDisplay"></p>
+                                <br>
+                                <br>
+                                <span class="price-display" id="priceDisplay"></span>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="button-div">
+                                <button class="all-btn" id="editRoomButton"><i class="material-icons">edit</i>Edit this room</button>
+                            </div>
+                        </li>
+                    </section>
+                </template>
+        </div>
+        <footer>
+            <div>
+                <p>
+                    Numero Uno Group © University of Wollongong Australia
+                </p>
+            </div>
+        </footer>
+        <!-- Create new room form -->
+        <div id="modalForm" class="modal-form">
+            <div class="modal-content">
+                <li>
+                    <!-- <span id="closeBtn" class="close" onclick="closeForm()">&times;</span> -->
+                    <i class="material-icons close" onclick="closeForm('modalForm')">close</i>
+                    <h1>List a new room</h1>
+                    <div id="roomForm">
+                        <label for="type">Type of room</label><br>
+                        <select name="selectType" id="formType">
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Big">Big</option>
+                        </select><br><br>
+
+                        <!-- <label for="selectDate">Date</label><br>
+                        <input class="selectDate" type="date" id="formDate"><br><br>
+
+                        <label for="selectTime">Time</label><br>
+                        <input class="selectTime" type="time" id="formTime"><br><br> -->
+
+                        <label for="formCapacity">Capacity</label><br>
+                        <input type="number" class="form-capacity" id="formCapacity" min="1" max="10" step="1" value="1" onchange="checkCapValue(this)"><br><br>
+
+                        <label for="formLocation">Location</label><br>
+                        <textarea name="loc" id="formLocation" placeholder="Location" cols="30" rows="5"></textarea><br><br>
+
+                        <label for="formDescription">Description</label><br>
+                        <textarea name="desc" id="formDescription" placeholder="Description" cols="30" rows="5"></textarea><br><br>
+
+                        <label for="formPrice">Price per hour in SGD</label><br>
+                        <input type="number" class="form-price" id="formPrice" placeholder="1.00" min="1" onchange="checkPriceValue(this)"><br><br>
+
+                        <label for="roomImage">Room Image</label>
+                        <input type="file" class="form-image" id="formImage" accept="image/*" onchange="checkImage(this)"><br><br>
+                        <img src="" alt="" id="previewImg" width="250px"><br>
+                        
+                        <label for="roomLaunch">Launch room</label>
+                        <input type="checkbox" id="roomLaunch" checked><br><br>
+                        
+                        <button class="all-btn" id="submitBtn" onclick="newRoomForm()"><i class="material-icons">check</i>Create room</button>
+                        <!-- <input type="submit" name="submitBtn" class="all-btn" id="submitBtn" onclick="newRoomForm()"> -->
+                        <p id="errorMsg"></p>
+                    </div>
+                </li>
+            </div>
+        </div>
+        <!-- Edit room form -->
+        <div class="modal-form" id="editDiv">
+            <div class="modal-content">
+                <li>
+                    <!-- <span id="closeEditBtn" class="close" onclick="cancelEdit()">&times;</span> -->
+                    <i class="material-icons close" onclick="cancelEdit()">close</i>
+                    <h1>Editing this room</h1>
+                    <div id="editForm">
+                        <span id="currentId" style="display: none;"></span>
+                        <span id="editId"></span><br>
+                        <label for="type">Type of room</label><br>
+                        <select name="changeType" id="editType">
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Big">Big</option>
+                        </select><br><br>
+
+                        <label for="editCapacity">Capacity</label><br>
+                        <input type="number" class="form-capacity" id="editCapacity" min="1" max="10" step="1" value="1" onchange="checkCapValue(this)" required><br><br>
+
+                        <label for="editLocation">Location</label><br>
+                        <textarea name="loc" id="editLocation" placeholder="Location" cols="30" rows="5"></textarea><br><br>
+
+                        <label for="editDescription">Description</label><br>
+                        <textarea name="loc" id="editDescription" placeholder="Description" cols="30" rows="5"></textarea><br><br>
+
+                        <label for="editPrice">Price per hour in SGD</label><br>
+                        <input type="number" class="form-price" id="editPrice" min="1" onchange="checkPriceValue(this)" pattern="^\d+(?:\.\d{1,2})?$" required><br><br>
+
+                        <label for="editLaunch">Launch</label>
+                        <input type="checkbox" id="editLaunch"><br><br>
+
+                        <button class="all-btn" id="editBtn" onclick="editRoomForm()"><i class="material-icons">check</i>Save</button>
+                        <button class="all-btn" id="deleteButton" onclick="confirmDelete()" style="float: right;"><i class="material-icons">delete</i>Delete this room</button>
+                        <p class="error" id="errorMsg"></p>
+                </li>
+            </div>
+        </div>
+
+        <!-- Promo form -->
+        <div class="modal-form" id="managePromoDiv">
+            <div class="modal-content">
+                <li>
+                    <i class="material-icons close" onclick="cancelManagePromo()">close</i>
+                    <h1>Manage promo codes</h1>
+                    <div id="promoForm">
+                        <label for="createPromo">Create new promo code</label><br>
+                        <input type="text" id="createPromoCode" placeholder="Promo code">
+                        <input type="number" id="createPromoDiscount" min="1" max="100" step="1" placeholder="Discount in %">
+                        <p class="error" id="promoErrorMsg"></p><br>
+                        <button class="all-btn" id="createPromoBtn" onclick="getPromoCode()"><i class="material-icons">check</i>Create promo</button><br>
+                        <br>
+                        <div id="removePromoList">
+                            <label for="promoTable">Remove promo</label>
+                            <!-- <li id="promoList"> -->
+                                <table id="promoTable" style="width:100%">
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Discount</th>
+                                    </tr>
+                                    <tbody id="promoTableBody">
+
+                                    </tbody>
+                                </table>
+                            <!-- </li> -->
+                        </div>
+                </li>
+            </div>
+        </div>
+
+        <!-- Template for each promo -->
+        <template id="promoTemp">
+            <div class="promo-form" id="promo">
+                <label for="promoCode">Promo code</label><br><br>
+                <span class="price-display" id="promoCode">abcdefg</span><br><br>
+                <label for="promoDiscount">Discount in %</label><br><br>
+                <span class="price-display" id="promoDiscount">100</span><br><br>
+                <button class="all-btn" id="deletePromoBtn" onclick="deletePromoCode()"><i class="material-icons">delete</i>Delete promo</button><br>
+            </div>
+        </template>
+
+        <!-- Confirm delete modal -->
+        <div class="modal-form" id="confirmModal">
+            <div class="modal-content confirm-content">
+                <p>Delete this room?</p><br>
+                <button class="all-btn" onclick="deleteRoom()">Yes</button>
+                <button class="all-btn" onclick="deleteNo()">No</button>
+            </div>
+        </div>
+    </body>
+</html>

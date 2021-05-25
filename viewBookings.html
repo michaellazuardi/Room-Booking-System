@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>View your bookings</title>
+        <link rel="stylesheet" href="./style.css">
+        <script defer src="function.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="nav-banner">
+                    <li>
+                        <img class="logo-img" src="./images/img_57ece1ff0e0f0.png" alt="logo">
+                    </li>
+                    <li>
+                        <a href="login.html" id="logoutButton" onclick="logoutUser()">Logout</a>
+                    </li>
+                    <li>
+                        <span id="usernameDisplay">
+                            Welcome, user
+                        </span>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact us</a>
+                    </li>
+                    <li>
+                        <a href="faq.html">FAQ</a>
+                    </li>
+                    <li>
+                        <a id="mainPage" href="#">Main page</a>
+                    </li>
+                </div>
+            </nav>
+        </header>
+        <div id="viewBookings"></div>
+        <div class="main-page">
+            <h1>View your bookings</h1>
+            <li class="room-list" id="roomList">
+
+            </li>
+            <template id="viewRoomTemp">
+                <section>
+                    <li class="room-div">
+                        <div class="room-details" id="viewRoomContainer">
+                            <img class="room-image" id="viewRoomImage" src="" alt="">
+                            <h1 id="viewRoomName"></h1>
+                            <h2 id="viewCapacity"></h2>
+                            <label for="viewLocation"><b>Location:</b></label>
+                            <p class="view-location" id="viewLocation"></p><br><br>
+                            <label for="viewDesc"><b>Description:</b></label>
+                            <p id="viewDesc"></p>
+                            <br>
+                            <label for="viewDateTimeDiv"><b>Date and time:</b></label>
+                            <p id="viewDate"></p>
+                            <br>
+                            <span class="price-display" id="viewPrice"></span>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="button-div">
+                            <button class="all-btn" id="viewRoomBtn"><i class="material-icons">edit</i>Edit this booking</button>
+                        </div>
+                    </li>
+                </section>
+            </template>
+            <template id="viewDateTimeTemp">
+                <p id="viewDateTime">12 May, 2020</p><i class="material-icons" id="viewDateTimeToggle">remove_circle_outline</i>
+            </template>
+        </div>
+        <div class="modal-form" id="editBookDiv">
+            <div class="modal-content">
+                <li>
+                    <i class="material-icons close" onclick="closeEditBookRoom()">close</i>
+                    <h1>Edit booking details</h1>
+                    <div id="editBookForm">
+                        <table id="editBookTable" style="width:100%">
+                            <tr>
+                                <th>Time</th>
+                                <th></th>
+                            </tr>
+                            <tbody id="editBookTableBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="error" id="errorMsg"></p>
+                </li>
+            </div>
+        </div>
+        <!-- Confirm delete modal -->
+        <div class="modal-form" id="confirmModal">
+            <div class="modal-content confirm-content">
+                <p>Delete this room?</p><br>
+                <button class="all-btn" onclick="deleteRoom()">Yes</button>
+                <button class="all-btn" onclick="deleteNo()">No</button>
+            </div>
+        </div>
+        <div class="modal-form" id="changeTimingModal">
+            <div class="modal-content">
+                <p>Change booking timing</p><br>
+                <label for="dateChanger">Select a date</label><br>
+                        <input type="date" name="chooseDate" id="dateChanger" placeholder="dd/mm/yyyy" onchange="checkChangeDate(this)"><br><br>
+                        <div class="time-display" id="timeDisplay">
+                            <label for="timeChanger">Time</label><br>
+                            <div id="timeChanger">
+                                <input type="checkbox" name="timings" value="0800" id="time0800" onchange="checkChangeTimeCheckboxes(this)">08:00<br>
+                                <input type="checkbox" name="timings" value="0900" id="time0900" onchange="checkChangeTimeCheckboxes(this)">09:00<br>
+                                <input type="checkbox" name="timings" value="1000" id="time1000" onchange="checkChangeTimeCheckboxes(this)">10:00<br>
+                                <input type="checkbox" name="timings" value="1100" id="time1100" onchange="checkChangeTimeCheckboxes(this)">11:00<br>
+                                <input type="checkbox" name="timings" value="1200" id="time1200" onchange="checkChangeTimeCheckboxes(this)">12:00<br>
+                                <input type="checkbox" name="timings" value="1300" id="time1300" onchange="checkChangeTimeCheckboxes(this)">13:00<br>
+                                <input type="checkbox" name="timings" value="1400" id="time1400" onchange="checkChangeTimeCheckboxes(this)">14:00<br>
+                                <input type="checkbox" name="timings" value="1500" id="time1500" onchange="checkChangeTimeCheckboxes(this)">15:00<br>
+                                <input type="checkbox" name="timings" value="1600" id="time1600" onchange="checkChangeTimeCheckboxes(this)">16:00<br>
+                            </div>
+                        </div>
+                        <p class="error" id="timeError"></p>
+                <button class="all-btn" onclick="confirmChangeDateTime(this)">Confirm</button>
+                <button class="all-btn" onclick="closeChangeDateTime(this)">Cancel</button>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <p>
+                    Numero Uno Group © University of Wollongong Australia
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

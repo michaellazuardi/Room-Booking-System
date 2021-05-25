@@ -1,0 +1,430 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    line-height: 30px;
+    height: 30px;
+    align-items: center;
+}
+
+p, span {
+    line-height: 1.6em;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=date]:focus,
+textarea:focus {
+    border: 4px solid teal;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px 10px;
+}
+
+.material-icons {
+    margin-left: -12px;
+    margin-right: 3px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    top: -2px;
+}
+
+/* All buttons have same style */
+.all-btn {
+    background-color: teal;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    /* margin: 20px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    transition-duration: 0.2s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.all-btn:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.all-btn:active {
+    background-color: lightgray;
+}
+
+.all-btn:disabled {
+    background-color: grey;
+    color: white;
+    cursor: default;
+}
+
+.error {
+    color: rgb(175, 2, 2);
+    font-size: 10px;
+}
+
+/* Header */
+.nav-banner {
+    background-color: teal;
+    overflow: hidden;
+}
+
+.nav-banner a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.nav-banner a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.nav-banner a.active {
+    background-color: #4CAF50;
+    color: white;
+    pointer-events: none;
+}
+
+.nav-banner span {
+    float: right;
+    font-size: 1.2em;
+    padding: 14px 16px;
+}
+
+.logo-img {
+    width: 10%;
+    float: left;
+    padding: 5px;
+    width: 8%;
+}
+
+.username {
+    margin-right: 100%;
+    width: max-content;
+}
+
+/* Room selections */
+.main-page {
+    padding: 50px;
+    text-align: left;
+    min-height: 75vh;
+    padding-bottom: 80px;
+    overflow: auto;
+}
+
+.room-div {
+    position: relative;
+    margin: 1em;
+    padding: 1em;
+}
+
+.room-image {
+    width: 30%;
+    border: 1px solid black;
+}
+
+.room-details {
+    border: 3px thick black;
+    padding: 20px;
+    width: 80%;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.room-details h1 {
+    font-size: 2em;
+}
+
+.room-details h2 {
+    font-size: 1.3em;
+}
+
+.price-display {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+.promo-form {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* Room selection button */
+.button-div {
+    position: absolute;
+    width: 15%;
+    top: 50%;
+    left: 83.5%;
+    text-align: center;
+}
+
+/* FAQ PAGE */
+
+/* List of FAQ */
+.faq-list {
+    display: block;
+    text-align: center;
+}
+
+.faq-list div {
+    position: relative;
+    width: 500px;
+    margin: 0;
+    padding: 10px;
+}
+
+.faq-question {
+    border: 1px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.faq-answer {
+    border: 1px solid black;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2em 0;
+}
+
+.faq-main {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CONTACT US PAGE */
+.contact-page img {
+    display: inline;
+}
+
+/* LOGIN PAGE */
+.login-fail {
+    color: maroon;
+}
+
+/* MANAGE ROOMS PAGE */
+.modal-form {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.room-type {
+    display: none;
+    font-size: 20px;
+}
+
+.form-desc {
+    height: fit-content;
+}
+
+/* .confirm-modal {
+    z-index: 2;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0, 0.4);
+} */
+
+.confirm-content {
+    width: 200px;
+    height: 150px;
+}
+
+/* MANAGE USERS PAGE */
+.user-list {
+    display: block;
+    width: 50%;
+}
+
+.user-list div {
+    position: relative;
+}
+
+.manage-user-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.manage-user {
+    display: grid;
+    grid-template-columns: 1fr 5fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: 
+        "manage-pic-div name-content edit-btn"
+        "manage-pic-div username-content history-btn";
+    column-gap: 10px;
+    padding: 2px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.manage-pic-div {
+    grid-area: manage-pic-div;
+    /* grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2; */
+}
+
+.manage-content {
+    grid-area: manage-content;
+    /* grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2; */
+}
+
+.edit-btn {
+    grid-area: edit-btn;
+    margin: 25% 0%;
+    /* grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2; */
+}
+
+.history-btn {
+    grid-area: history-btn;
+    margin: 25% 0%;
+    /* grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3; */
+}
+
+/* BOOKING PAGE */
+.div-details {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.detail-room {
+    width: 20%;
+    display: inline-block;
+    padding: 10px;
+}
+
+.booking-page {
+    width: 20%;
+    display: inline-block;
+    padding: 10px;
+}
+
+.details-img {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.card-number {
+    width: 250px;
+    margin: 20px 0px;
+}
+
+.card-expiry {
+    width: 30px;
+    margin: 20px 0px;
+}
+
+.card-cvv {
+    width: 50px;
+    margin: 20px 0px;
+}
+
+.hide-display {
+    display: none;
+}
+
+.time-display {
+    visibility: hidden;
+}
+
+
+
+/* Footer */
+footer {
+    background-color: gray;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer div {
+    margin: 0;
+    width: 99%;
+    height: 50%;
+    border-bottom: 2px solid darkgray;
+}
+
+footer p {
+    color: white;
+    /* font-family: Helvetica, sans-serif; */
+}
+
+.enclose {
+    border: 1px solid black;
+}
